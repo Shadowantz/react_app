@@ -16,9 +16,6 @@ module.exports = merge(common, {
 		},
 		stats: 'minimal',
 		host: '0.0.0.0',
-		proxy: {
-			// '/api': 'http://localhost:9876'
-		},
 	},
 	devtool: 'cheap-source-map',
 	module: {

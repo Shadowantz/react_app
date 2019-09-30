@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { EnvironmentPlugin } = require('webpack');
 const path = require('path');
+
 const rootDir = path.resolve(__dirname, '..');
 
 module.exports = {
@@ -16,10 +16,10 @@ module.exports = {
 				commons: {
 					test: /[\\/]node_modules[\\/]/,
 					name: 'vendors',
-					chunks: 'all'
-				}
-			}
-		}
+					chunks: 'all',
+				},
+			},
+		},
 	},
 	module: {
 		rules: [
@@ -56,9 +56,6 @@ module.exports = {
 			cache: false,
 			template: './src/index.html',
 			filename: 'index.html',
-		}),
-		new EnvironmentPlugin({
-			versionInfo: Date(), // adds a date version tab
 		}),
 	],
 };

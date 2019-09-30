@@ -1,8 +1,9 @@
 import reduceReducers from 'reduce-reducers';
 import * as R from 'ramda';
 
-import { TABLE_DATA, defaultRowsPerView, defaultPage } from './constants/constants';
-import { findInObj } from './utils/utils';
+import { defaultRowsPerView, defaultPage } from './constants/constants';
+import { findInObj, orderFunctions } from './utils/utils';
+import { TABLE_DATA } from './constants/TABLE_DATA.js';
 
 const initialState = {
 	orderBy: 'name',
@@ -14,6 +15,7 @@ const initialState = {
 	splitElements: R.splitAt(defaultRowsPerView, TABLE_DATA),
 };
 
+// Actions
 export const sortElements = (columnName) => ({
 	type: 'sortElements',
 	payload: columnName,
@@ -34,10 +36,7 @@ export const filterBySearch = (filterCriteria) => ({
 	payload: filterCriteria,
 });
 
-const orderFunctions = {
-	desc: (propName) => R.descend(R.prop(propName)),
-	asc: (propName) => R.ascend(R.prop(propName)),
-};
+// --- END OF ACTIONS ---
 
 const mainTableReducer = (state, action) => {
 	switch (action.type) {

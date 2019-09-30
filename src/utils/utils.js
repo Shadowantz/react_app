@@ -32,3 +32,8 @@ export function findInObj(obj, elemToFind) {
 		return R.includes(toFind, findIn);
 	}, R.keys(obj));
 }
+
+export const orderFunctions = {
+	desc: (propName) => R.descend(R.prop(propName)),
+	asc: (propName) => R.ascend(R.prop(propName)),
+};
