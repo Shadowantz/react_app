@@ -8,7 +8,7 @@ const rootDir = path.resolve(__dirname, '..');
 
 module.exports = merge(common, {
 	output: {
-		path: path.resolve(rootDir, 'dist'),
+		path: path.resolve(rootDir, 'docs'),
 		filename: 'js/[name].[hash].js',
 	},
 	mode: 'production',
