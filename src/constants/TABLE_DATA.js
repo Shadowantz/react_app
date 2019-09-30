@@ -1,0 +1,32 @@
+export const TABLE_DATA = [
+	{
+		ticketType: 'Bug',
+		ticketNumber: '1',
+		ticketSummary: '',
+		assignee: 'unassigned',
+		reporter: 'user1',
+		priority: 'blocker',
+		status: 'open',
+		estimate: '0',
+	},
+	{
+		ticketType: 'Bug',
+		ticketNumber: '2',
+		ticketSummary: '',
+		assignee: 'unassigned',
+		reporter: 'user1',
+		priority: 'blocker',
+		status: 'open',
+		estimate: '0',
+	},
+	{
+		ticketType: 'Bug',
+		ticketNumber: '3',
+		ticketSummary: '',
+		assignee: 'unassigned',
+		reporter: 'user1',
+		priority: 'blocker',
+		status: 'open',
+		estimate: '0',
+	},
+];

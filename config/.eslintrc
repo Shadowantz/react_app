@@ -1,0 +1,79 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      "tab",
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreUrls": true,
+        "ignoreComments": false
+      }
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "hoist": "all"
+      }
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ],
+    "no-tabs": 0,
+    "no-unused-vars": 1,
+    "no-console": 1,
+    // PLEASE REMOVE THE RULE BELOW ASAP,
+    "import/prefer-default-export": 0,
+    "import/extensions": 0,
+    "react/prop-types": 0,
+    "react/jsx-indent": [
+      2,
+      "tab"
+    ],
+    "react/jsx-indent-props": [
+      2,
+      "tab"
+    ],
+    "react/jsx-one-expression-per-line": 2,
+    "react/jsx-filename-extension": 0,
+    "react/forbid-foreign-prop-types": 2,
+    "react/forbid-prop-types": 2,
+    "jsx-a11y/no-noninteractive-tabindex": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/jsx-a11y/aria-role": 0,
+    "jsx-a11y/label-has-for": 0
+  }
+}
