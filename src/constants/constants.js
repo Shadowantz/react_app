@@ -43,7 +43,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'Epic',
 		ticketNumber: 4,
@@ -65,7 +64,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'Epic',
 		ticketNumber: 6,
@@ -76,7 +74,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'Task',
 		ticketNumber: 7,
@@ -87,7 +84,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'Epic',
 		ticketNumber: 8,
@@ -98,7 +94,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'User Story',
 		ticketNumber: 9,
@@ -109,7 +104,6 @@ export const TABLE_DATA = [
 		status: 'open',
 		estimate: '0',
 	},
-
 	{
 		ticketType: 'User Story',
 		ticketNumber: 10,

@@ -1,23 +1,34 @@
-export function desc(a, b, orderBy) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
+import * as R from 'ramda';
+
+export function debounceUtility(func, wait, immediate) {
+	let timeout;
+
+	return function () {
+		const context = this;
+		const args = arguments; // eslint-disable-line
+		const callNow = immediate && !timeout;
+
+		clearTimeout(timeout);
+
+		timeout = setTimeout(() => {
+			timeout = null;
+
+			if (!immediate) {
+				func.apply(context, args);
+			}
+		}, wait);
+
+		if (callNow) func.apply(context, args);
+	};
 }
 
-export function stableSort(array, cmp) {
-	const stabilizedThis = array.map((el, index) => [el, index]);
-	stabilizedThis.sort((a, b) => {
-		const order = cmp(a[0], b[0]);
-		if (order !== 0) return order;
-		return a[1] - b[1];
-	});
-	return stabilizedThis.map(el => el[0]);
-}
+const toStringToLower = (el) => R.toLower(R.toString(el));
 
-export function getSorting(order, orderBy) {
-	return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+export function findInObj(obj, elemToFind) {
+	return R.map((elem) => {
+		const toFind = toStringToLower(elemToFind);
+		const findIn = toStringToLower(obj[elem]);
+
+		return R.includes(toFind, findIn);
+	}, R.keys(obj));
 }

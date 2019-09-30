@@ -2,6 +2,7 @@ import reduceReducers from 'reduce-reducers';
 import * as R from 'ramda';
 
 import { TABLE_DATA, defaultRowsPerView, defaultPage } from './constants/constants';
+import { findInObj } from './utils/utils';
 
 const initialState = {
 	orderBy: 'name',
@@ -28,6 +29,11 @@ export const setRowsPerView = (numberOfPages) => ({
 	payload: numberOfPages,
 });
 
+export const filterBySearch = (filterCriteria) => ({
+	type: 'filterBySearch',
+	payload: filterCriteria,
+});
+
 const orderFunctions = {
 	desc: (propName) => R.descend(R.prop(propName)),
 	asc: (propName) => R.ascend(R.prop(propName)),
@@ -43,8 +49,6 @@ const mainTableReducer = (state, action) => {
 
 			const splitElements = R.splitEvery(rowsPerView, newOrderedTableElements);
 
-			console.log(splitElements[page], 'qqqq');
-
 			return {
 				...state,
 				orderBy: action.payload,
@@ -56,7 +60,6 @@ const mainTableReducer = (state, action) => {
 		}
 
 		case 'setPage': {
-			console.log('setPage', action.payload);
 			const page = action.payload;
 			const { splitElements } = state;
 
@@ -71,12 +74,23 @@ const mainTableReducer = (state, action) => {
 			const rowsPerView = action.payload;
 			const { tableElements, page } = state;
 			const splitElements = R.splitEvery(rowsPerView, tableElements);
-			console.log('setRowsPerView', action.payload);
 
 			return {
 				...state,
 				rowsPerView: action.payload,
 				displayElements: splitElements[page],
+			};
+		}
+
+		case 'filterBySearch': {
+			const { splitElements, page } = state;
+			const displayAndFilteredElements = R.filter((elem) => R.includes(
+				true, findInObj(elem, action.payload),
+			), splitElements[page]);
+
+			return {
+				...state,
+				displayElements: displayAndFilteredElements,
 			};
 		}
 
