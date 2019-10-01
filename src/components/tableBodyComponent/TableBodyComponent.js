@@ -31,7 +31,7 @@ function generateTableRow(elem) {
 	);
 }
 
-function TableBodyComponent(props) {
+export function TableBodyComponent(props) {
 	const { displayElements } = props;
 
 	if (!displayElements) return null;
@@ -43,7 +43,7 @@ function TableBodyComponent(props) {
 	);
 }
 
-export default connect(
+const TableBodyComponentConnected = connect(
 	(state) => {
 		const { displayElements } = state;
 
@@ -52,3 +52,5 @@ export default connect(
 		};
 	},
 )(TableBodyComponent);
+
+export default TableBodyComponentConnected;

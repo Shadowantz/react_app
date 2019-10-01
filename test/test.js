@@ -1,12 +1,36 @@
-const webDriver = require('selenium-webdriver');
+import React from 'react';
+import { TableHeadComponent } from '../src/components/tableHeadComponent/TableHeadComponent';
+import { TableBodyComponent } from '../src/components/tableBodyComponent/TableBodyComponent';
+import { TableFooterComponent } from '../src/components/tableFooterComponent/TableFooterComponent';
+import renderer from 'react-test-renderer';
 
-const driver = new webDriver.Builder().forBrowser('chrome').build();
+test('Expect to render the table head component', () => {
+	const component = renderer.create(
+		<TableHeadComponent />,
+	);
+	let tree = component.toJSON();
+	expect(tree).toMatchSnapshot();
+});
 
-function searchForBugs() {
-	driver.get('https://shadowantz.github.io/react_app/index.html').then(() => {
-		driver.findElement(webDriver.By.css('input .MuiInputBase-input'));
-		// TODO: will move to jest and react test only because selenium-webdriver doesn't want to run in a CI environment...
-	});
-}
+test('Expect to render the table body component', () => {
+	const component = renderer.create(
+		<TableBodyComponent />,
+	);
+	let tree = component.toJSON();
+	expect(tree).toMatchSnapshot();
+});
 
-searchForBugs();
+test('Expect to render the table footer component', () => {
+	const component = renderer.create(
+		<TableFooterComponent
+			props={{
+				rowsPerPageOptions: [5, 10],
+				count: 10,
+				rowsPerPage: 5,
+				page: 0
+			}}
+		/>,
+	);
+	let tree = component.toJSON();
+	expect(tree).toMatchSnapshot();
+});

@@ -13,7 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { setPage, setRowsPerView, filterBySearch } from '../../reducers';
 import { debounceUtility } from '../../utils/utils.js';
 
-function TableFooterComponent(props) {
+export function TableFooterComponent(props) {
 	const { elementsCount, page, rowsPerView, setRowsPerViewAction, setPageAction, filterBySearchAction } = props;
 	const [searchText, setSearchText] = useState('');
 
@@ -71,7 +71,7 @@ function TableFooterComponent(props) {
 	);
 }
 
-export default connect(
+const TableFooterComponentConnected = connect(
 	(state) => {
 		const { page, rowsPerView, tableElements } = state;
 
@@ -87,3 +87,5 @@ export default connect(
 		filterBySearchAction: filterBySearch,
 	},
 )(TableFooterComponent);
+
+export default TableFooterComponentConnected;

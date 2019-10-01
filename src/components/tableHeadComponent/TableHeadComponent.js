@@ -10,7 +10,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { sortElements } from '../../reducers';
 import HEADER from '../../constants/HEADER';
 
-function TableHeadComponent(props) {
+export function TableHeadComponent(props) {
 	const { sortElementsAction, orderBy, orderDirection } = props;
 
 	return (
@@ -37,7 +37,7 @@ function TableHeadComponent(props) {
 	);
 }
 
-export default connect(
+const TableHeadComponentConnected = connect(
 	(state) => {
 		const { orderBy, orderDirection } = state;
 
@@ -50,3 +50,5 @@ export default connect(
 		sortElementsAction: sortElements,
 	},
 )(TableHeadComponent);
+
+export default TableHeadComponentConnected;
