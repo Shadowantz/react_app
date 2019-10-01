@@ -76,6 +76,7 @@ const mainTableReducer = (state, action) => {
 
 			return {
 				...state,
+				splitElements,
 				rowsPerView: action.payload,
 				displayElements: splitElements[page],
 			};

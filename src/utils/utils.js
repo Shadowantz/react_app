@@ -3,7 +3,7 @@ import * as R from 'ramda';
 export function debounceUtility(func, wait, immediate) {
 	let timeout;
 
-	return function () {
+	return () => {
 		const context = this;
 		const args = arguments; // eslint-disable-line
 		const callNow = immediate && !timeout;
@@ -22,7 +22,12 @@ export function debounceUtility(func, wait, immediate) {
 	};
 }
 
-const toStringToLower = (el) => R.toLower(R.toString(el));
+const toStringToLower = (el) => {
+	if (R.type(el) === 'String') {
+		return R.toLower(el);
+	}
+	return R.toLower(R.toString(el));
+};
 
 export function findInObj(obj, elemToFind) {
 	return R.map((elem) => {

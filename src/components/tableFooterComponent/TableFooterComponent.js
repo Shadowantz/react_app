@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import * as R from 'ramda';
 import { connect } from 'react-redux';
 
@@ -15,6 +15,21 @@ import { debounceUtility } from '../../utils/utils.js';
 
 function TableFooterComponent(props) {
 	const { elementsCount, page, rowsPerView, setRowsPerViewAction, setPageAction, filterBySearchAction } = props;
+	const [searchText, setSearchText] = useState('');
+
+	const filterOnEnter = (keyCode) => {
+		if (keyCode === 'Enter') {
+			filterBySearchAction(searchText);
+		}
+	};
+
+	const filterOnKeyPress = (value) => {
+		if (!value) {
+			filterBySearchAction('');
+		}
+
+		setSearchText(value);
+	};
 
 	return (
 		<TableFooter>
@@ -25,10 +40,13 @@ function TableFooterComponent(props) {
 					<InputBase
 						className="inputClass"
 						placeholder="Search..."
-						onChange={(event) => debounceUtility(filterBySearchAction(event.target.value), 300)}
+						onChange={(event) => debounceUtility(filterOnKeyPress(event.target.value), 300)}
+						onKeyPress={(event) => debounceUtility(filterOnEnter(event.key), 300)}
+						type="search"
 					/>
 					<IconButton
 						aria-label="search"
+						onClick={() => filterBySearchAction(searchText)}
 					>
 						<SearchIcon />
 					</IconButton>

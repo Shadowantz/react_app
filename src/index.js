@@ -6,6 +6,10 @@ import store from './store.js';
 
 import './styles/main.scss';
 
+if (process.env.NODE_ENV === 'development') {
+	window.store = store.getState;
+}
+
 ReactDom.render(
 	<Provider store={store}>
 		<MainPage />
